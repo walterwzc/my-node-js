@@ -1,0 +1,43 @@
+help
+db
+use music
+
+db.music.insertOne({title: '再见理想'})
+db.music.insertMany([{title: '旧日足迹'}, {title: '香港'}])
+db.music.insert([{title: '光辉岁月'}, { title: '继续革命'}])
+
+db.music.updateMany(
+  {},
+  {
+    $set: { artlist: 'Beyond' }
+  }
+)
+db.music.updateOne(
+  {title: '继续革命'},
+  {
+    $set: { artist: 'Coldplay' }
+  }
+)
+
+db.music.deleteOne({artist: 'Beyond'})
+db.music.deleteMany({artist: 'Beyond'})
+db.music.remove({artist: 'Coldplay'}, true)
+db.music.remove({})
+
+db.createCollection('movies')
+db.movies.insertMany(...)
+
+db.movies.find({year: '1994'}, {title: 1, year: 1})
+db.movies.find({year: '1994'}, {title: 1, year: 1, _id: 0})
+db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0})
+db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0}).size()
+db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0}).skip(10)
+db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0}).limit(3)
+db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0}).limit(3).skip(3)
+db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0}).sort({'rating.average': 1})
+db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0}).sort({'rating.average': -1})
+db.movies.find({'rating.average': { $gt: 9.5 }}, {title: 1, 'rating.average': 1, _id: 0})
+db.movies.find({'rating.average': { $lt: 9.5 }}, {title: 1, 'rating.average': 1, _id: 0})
+db.movies.find({genres: {$in: ['犯罪']}}, {title: 1, genres: 1, _id: 0})
+db.movies.find({genres: {$in: ['犯罪', '剧情']}}, {title: 1, genres: 1, _id: 0})
+db.movies.find({genres: {$nin: ['犯罪', '剧情']}}, {title: 1, genres: 1, _id: 0})

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "request": "^2.83.0"
+  },
+  "name": "02-modules",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}

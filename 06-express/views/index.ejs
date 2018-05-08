@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Index</title>
+</head>
+<body>
+  <%- include('header', {title: '首页'}) %>
+  首页
+  <%# aa %>
+  <%
+    if (isLogin) 
+  %>
+  <div><%- name %></div>
+  <% } else { %>
+  <div><a href="">注册</a><a href="">登录</a></div>
+  <% } %>
+  <%- include('footer', {version: 'v1.0'}) %>
+  <script src="/scripts/app.js"></script>
+</body>
+</html>

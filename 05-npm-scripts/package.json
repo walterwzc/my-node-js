@@ -1,0 +1,16 @@
+{
+  "name": "05-npm-scripts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "rm": "rm -rf index.html",
+    "run1": "node index1.js",
+    "run2": "node index2.js",
+    "run": "npm run run1 && npm run run2",
+    "preabc": "echo abc start",
+    "abc": "echo abc",
+    "postabc": "echo abc end",
+    "view": "node view.js"
+  }
+}

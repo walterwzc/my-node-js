@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>socket.io</title>
+    <script src="socket.io.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <h1>gp5 交流区</h1>
+    <div id="content" name="name" style="width: 400px; height: 300px; border: solid 1px #000"></div>
+    <br />
+    <div>
+        <input type="text" id="msg" style="width: 200px;">
+    </div>
+    <button id="submit">提交</button>
+
+
+    <script>
+        var socket = io.connect('http://localhost:9002');
+
+        socket.on('connect', function () {
+            socket.on('event client', function (data) {
+                document.querySelector('#content').innerHTML += data + "<br />"
+            });
+        });
+
+        document.querySelector('#submit')
+            .addEventListener('click', function () {
+                var msg = document.querySelector('#msg').value
+                socket.emit('event server', {
+                    message: msg
+                })
+            }, false)
+            
+    </script>
+
+</body>
+
+</html>
